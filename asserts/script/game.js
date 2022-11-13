@@ -20,6 +20,8 @@ var gameOver = false;
 var velocityX = 0;
 var velocityY = 0;
 
+let interval = null;
+
 
 window.onload = function () {
     board = document.getElementById("board");
@@ -30,7 +32,7 @@ window.onload = function () {
     placeFood();
     document.addEventListener("keyup",changeDirection);
     /*update();*/
-    setInterval(update,300);
+     interval = setInterval(update,300);
 }
 
 function update() {
@@ -87,6 +89,7 @@ function placeFood(){
 
 function changeDirection(e) {
     if(e.code == "ArrowUp" && velocityY != 1){
+        setInterval(interval,200);
         velocityX = 0;
         velocityY = -1;
     }
@@ -101,5 +104,7 @@ function changeDirection(e) {
    else if(e.code == "ArrowRight" && velocityX != -1){
         velocityX = 1;
         velocityY = 0;
+    }else if(e.code == "Space" || e.code == "Esc"){
+       clearInterval(interval);
     }
 }
