@@ -71,6 +71,13 @@ function update() {
         gameOver = true;
         alert("Game Over :-(");
     }
+
+    for (let i = 0; i < snakebody.length; i++) {
+        if(snakeX == snakebody[i][0] && snakeY == snakebody[i][1]){
+            gameOver = true;
+            alert("Game Over :-(");
+        }
+    }
 }
 
 function placeFood(){
