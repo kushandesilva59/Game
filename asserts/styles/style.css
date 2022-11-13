@@ -29,11 +29,37 @@ body>div:nth-child(3){
     right: 200px;
     width: 150px;
     height: 70px;
-    background-color: #6a1a21;
+    background-color: darkslategrey;
+    border-radius: 11px;
+    box-shadow: 0 0 5px 5px;
 
 }
 
 body>div:nth-child(3)>h1:first-child{
+    width: max-content;
+    height: max-content;
+    color: aquamarine;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+}
+
+body>div:nth-child(4){
+    position: absolute;
+    top: 55px;
+    right: 45px;
+    width: 150px;
+    height: 70px;
+    background-color: darkslategrey;
+    border-radius: 11px;
+    box-shadow: 0 0 5px 5px;
+
+}
+
+body>div:nth-child(4)>h1:first-child{
     width: max-content;
     height: max-content;
     color: aquamarine;
