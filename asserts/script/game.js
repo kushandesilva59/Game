@@ -15,6 +15,8 @@ var snakebody = [];
 var foodX;
 var foodY;
 
+var gameOver = false;
+
 var velocityX = 0;
 var velocityY = 0;
 
@@ -32,6 +34,10 @@ window.onload = function () {
 }
 
 function update() {
+    if(gameOver){
+        return;
+    }
+
     context.fillStyle = "black";
     context.fillRect(0,0,board.width,board.height);
 
@@ -60,7 +66,11 @@ function update() {
         context.fillRect(snakebody[i][0],snakebody[i][1],blockSize,blockSize);
     }
 
-
+    //game over
+    if(snakeX < 0 || snakeX > cols*blockSize || snakeY < 0 || snakeY > rows*blockSize){
+        gameOver = true;
+        alert("Game Over :-(");
+    }
 }
 
 function placeFood(){
