@@ -26,20 +26,26 @@ window.onload = function () {
     placeFood();
     document.addEventListener("keyup",changeDirection);
     /*update();*/
-    setInterval(update,100);
+    setInterval(update,300);
 }
 
 function update() {
     context.fillStyle = "black";
     context.fillRect(0,0,board.width,board.height);
 
+    context.fillStyle = "red";
+    context.fillRect(foodX,foodY,blockSize,blockSize);
+
+    if(snakeX == foodX && snakeY == foodY){
+        placeFood();
+    }
+
     context.fillStyle = "yellow";
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX,snakeY,blockSize,blockSize);
 
-    context.fillStyle = "red";
-    context.fillRect(foodX,foodY,blockSize,blockSize);
+
 }
 
 function placeFood(){
@@ -48,19 +54,19 @@ function placeFood(){
 }
 
 function changeDirection(e) {
-    if(e.code == "ArrowUp"){
+    if(e.code == "ArrowUp" && velocityY != 1){
         velocityX = 0;
         velocityY = -1;
     }
-    else if(e.code == "ArrowDown"){
+    else if(e.code == "ArrowDown" && velocityY != -1){
         velocityX = 0;
         velocityY = 1;
     }
-    else if(e.code == "ArrowLeft"){
+    else if(e.code == "ArrowLeft" && velocityX != 1){
         velocityX = -1;
         velocityY = 0;
     }
-   else if(e.code == "ArrowRight"){
+   else if(e.code == "ArrowRight" && velocityX != -1){
         velocityX = 1;
         velocityY = 0;
     }
