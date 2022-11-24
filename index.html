@@ -28,6 +28,11 @@
 
     <div>
         <h1 id="score">0</h1>
+
+        <div>
+            <h2>Level</h2>
+            <h2 id="level">1</h2>
+        </div>
     </div>
 
 
@@ -58,7 +63,7 @@
 
       let interval = null;
 
-      var score = 0;
+      var score = 80;
 
 
       window.onload = function () {
@@ -70,7 +75,7 @@
           placeFood();
           document.addEventListener("keyup",changeDirection);
           /*update();*/
-          interval = setInterval(update,300);
+          interval = setInterval(update,500);
       }
 
 
@@ -87,6 +92,13 @@
 
           if(snakeX == foodX && snakeY == foodY){
               score += 10;
+              if(score>300){
+                  setInterval(update,100);
+              }else if (score>200){
+                  setInterval(update,200);
+              }else if (score>100){
+                  setInterval(update,300);
+              }
               calculateScore();
               snakebody.push([foodX,foodY]);
               placeFood();
@@ -142,11 +154,8 @@
               velocityY = 0;
           }
           else if(e.code == "ArrowRight" && velocityX != -1){
-
               velocityX = 1;
               velocityY = 0;
-          }else if(e.code == "Space" || e.code == "Esc"){
-              clearInterval(interval);
           }
       }
 
