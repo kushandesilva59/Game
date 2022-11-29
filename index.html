@@ -63,7 +63,9 @@
 
       let interval = null;
 
-      var score = 80;
+      var score = 0;
+
+      var level = 1;
 
 
       window.onload = function () {
@@ -93,11 +95,21 @@
           if(snakeX == foodX && snakeY == foodY){
               score += 10;
               if(score>300){
-                  setInterval(update,100);
+                  level = 4;
+                  clearInterval(interval);
+
+                  interval = setInterval(update,100);
+
               }else if (score>200){
-                  setInterval(update,200);
+                  level = 3;
+                  clearInterval(interval);
+
+                  interval = setInterval(update,200);
+
               }else if (score>100){
-                  setInterval(update,300);
+                  level = 2;
+                  clearInterval(interval);
+                 interval = setInterval(update,300);
               }
               calculateScore();
               snakebody.push([foodX,foodY]);
@@ -161,6 +173,7 @@
 
       function calculateScore() {
           document.getElementById("score").innerHTML = score;
+          document.getElementById("level").innerText = level;
       }
 
     </script>
